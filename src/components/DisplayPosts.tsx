@@ -52,7 +52,7 @@ export interface Post {
                                         <h2>{post.title}</h2>
                                         <p>{post.body}</p>
                                     </div>
-                                    <div className="jumbotron-div col s12">
+                                    <div >
                                         <ul className="collection">
                                         {
                                             comments.map(comment => {
@@ -61,7 +61,7 @@ export interface Post {
                                                    return (
                                                         <li
                                                             key={comment.id}
-                                                            className="collection-item left-align purple lighten-2"
+                                                            
                                                         >
                                                             <p className="email">{comment.email} </p>
                                                             <p>{comment.body}</p>
