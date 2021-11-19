@@ -67,8 +67,8 @@ const DisplayPosts = () => {
         {posts
           .sort(sortId ? (a, b) => a.id - b.id : (a, b) => b.id - a.id)
           .map((post) => (
-            <div>
-              <div key={post.id} className="posts-container">
+            <div key={post.id}>
+              <div className="posts-container">
                 <h2>{post.title}</h2>
                 <div className="dropdown">
                   <span>Post Menu</span>
