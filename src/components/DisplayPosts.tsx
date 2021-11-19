@@ -1,6 +1,7 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CopyToClipboard from "react-copy-to-clipboard";
+import FormAddPost from './FormAddPost';
 
 /* Create interface for data's type*/
 
@@ -23,27 +24,33 @@ export interface Post {
     
     const DisplayPosts  = () => {
         
-        
+ /* Data's for posts and comments */       
         const [posts, setPosts] = useState<Post[]>([]);
         const [comments, setComments] =useState<Comment[]>([]);
 
 /* Sort by id's and most commented */
-        const [sortId, setSortId] = useState(true);
-        const [sortComment, setSortComment] = useState(true);
+        const [sortId, setSortId] = useState<boolean>(true);
+        const [sortComment, setSortComment] = useState<boolean>(true);
         
 
 /* fetch data's */
 
-        fetch('https://jsonplaceholder.typicode.com/posts/')
-        .then(response => response.json())
-        .then(res => {  
-            setPosts(res)
-        } );
-        fetch('https://jsonplaceholder.typicode.com/comments')
-        .then(response => response.json())
-        .then(res => {  
-            setComments(res)
-        } );
+useEffect(() => {
+    
+    fetch('https://jsonplaceholder.typicode.com/posts/')
+    .then(response => response.json())
+    .then(res => {  
+        setPosts(res)
+    } );
+    fetch('https://jsonplaceholder.typicode.com/comments')
+    .then(response => response.json())
+    .then(res => {  
+        setComments(res)
+    } );
+
+},[])
+
+/* sort by id's and by most commented */
 
         const handleSortById = () => {
             setSortId(!sortId);
@@ -56,6 +63,7 @@ export interface Post {
     
     return (
         <div className="display-posts">
+            <FormAddPost/>
             <div className="container-button">
                 <button onClick={handleSortById}>Sort by id's</button>
                 <button onClick={handleSortByMostCommented}>Sort by most commented</button>
@@ -94,8 +102,7 @@ export interface Post {
                                                 if (post.id === comment.postId) {
                                                    return (
                                                         <li
-                                                            key={comment.id}
-                                                            
+                                                            key={comment.id}      
                                                         >
                                                             <p className="email">{comment.email} </p>
                                                             <p>{comment.body}</p>

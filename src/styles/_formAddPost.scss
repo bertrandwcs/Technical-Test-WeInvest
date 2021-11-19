@@ -1,0 +1,71 @@
+.container-addPost {
+
+  .form-grid-container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    row-gap: 10px;
+
+    label{
+      font-weight: bolder;
+    }
+
+    textarea{
+      height: 100px;
+    }
+  }
+  .head-container {
+    position: relative;
+    background-color: #1d4ed8;
+    color: white;
+    padding: 5px 0 5px 10px;
+    margin-bottom: 20px;
+
+    h4{
+      opacity: 0.5;
+    }
+    
+    button {
+      position: absolute;
+      top:10px;
+      right:10px;
+      color: white;
+      border: none;
+      background-color: #1d4ed8;
+    }
+  }
+
+  .show-form-pop{
+        position: absolute;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.507);
+        animation: popup .3s ease forwards ;
+        transform-origin: center;
+        z-index: 2;
+      }
+
+      .form-content{
+        position: relative;
+        top:100px;
+        width: 600px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 10px;
+        padding: 2rem;
+        box-shadow: 0 10px 10px #333;
+        animation: popup .6s ease forwards;
+        transform: scale(0);
+        transform-origin: center;
+        z-index: 3;
+    @keyframes popup {
+          to {
+            transform: scale(1);
+          } 
+        }
+    
+      }
+
+}
