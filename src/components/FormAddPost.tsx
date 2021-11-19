@@ -1,7 +1,17 @@
 import React, { useState } from "react";
 
+/* interface for people array */
+
+export interface People {
+  id: number;
+  name: string;
+  avatar: string;
+}
+
 const FormAddPost = () => {
-  const people = [
+  /* Data's for the select in form */
+
+  const people: People[] = [
     {
       id: 1,
       name: "Wade Cooper",
@@ -64,16 +74,19 @@ const FormAddPost = () => {
     },
   ];
 
+  /* input's form */
   const [title, setTitle] = useState<String>("");
   const [body, setBody] = useState<String>("");
   const [userName, setUserName] = useState<String>("");
 
+  /* boolean popup */
   const [togglePopup, setTogglePopup] = useState<boolean>(false);
 
+  /* toggle form */
   const handleAddpost = () => {
     setTogglePopup(!togglePopup);
   };
-
+  /* Submit form */
   const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = {
